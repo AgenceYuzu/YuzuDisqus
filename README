@@ -1,0 +1,30 @@
+Yuzu Disqus extension README
+
+What is the Yuzu Disqus extension?
+==================================
+
+   This extension provides the integration of Disqus commenting platform on
+   eZ Publish software.
+   Some widgets are also available.
+
+
+License
+=======
+
+   This software is licensed under the GNU General Public License v2.0.
+   The complete license agreement is included in the LICENSE file. For
+   more information or questions please contact contact@agenceyuzu.fr
+
+
+Installation
+============
+
+Please read the INSTALL file for installation instructions.
+
+
+Support
+=======
+
+For any problems, contact us through the project page : http://projects.ez.no
+
+For french users, you can refer to our french blog : http://blog.agenceyuzu.fr

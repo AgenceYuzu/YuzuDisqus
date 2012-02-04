@@ -1,0 +1,183 @@
+Yuzu Disqus extension INSTALL
+
+Introduction
+============
+
+This extension provides the integration of Disqus commenting platform on
+eZ Publish software.
+Read the README file for more information.
+
+
+
+
+Requirements
+============
+
+eZ Publish version:
+
+This extension has been tested on eZ Publish version 4.x
+Can be useable on earlier versions of eZ Publish
+
+Disqus:
+
+You must create an account on disqus.com
+
+
+
+
+Installing Yuzu Disqus extension
+================================
+
+1. Unzip the files in your 'extension' directory of your eZ Publish site
+
+2. Edit settings/yuzudisqus.ini.append.php
+
+3. Replace 'example' in shortname parameter by your shortname declared on disqus
+
+4. Log into your administration interface
+
+5. Activate yuzudisqus extension
+
+6. Clear the cache
+
+
+
+
+Integrate Disqus into your site
+==============================================
+
+Comments functionnality
+-----------------------
+
+1. Edit settings/yuzudisqus.ini.append.php
+
+2. Insert the following code
+[blog]
+shortname=example
+
+3. Replace example by your disqus shortname and save
+
+4. Edit the template of the content class.
+For example extension/ezwebin/design/ezwebin/override/templates/full/blog_post.tpl
+
+5. Paste the following code
+{include uri='design:disqus.tpl' disqusini='blog' node_id=$node.node_id}
+
+disqusini: name of block parameter in yuzudisqus.ini.append.php
+node_id: identifier for the disqus system
+
+6. Save the file and clear caches
+
+Note:
+If you use this extension for a local development mode, you must activate
+the development mode by adding a line in your yuzudisqus.ini.append.php like this
+
+[blog]
+shortname=example
+developer=1
+
+
+
+Comment count functionnality
+----------------------------
+
+If you want to display the number of comment on a page, you can include this
+in the view full of a content class:
+<a href="#disqus_thread" data-disqus-identifier="{$node.node_id}">
+{include uri='design:disqus_count.tpl' disqusini='example' node_id=$node.node_id} comments</a>
+
+
+
+Threads functionnality
+----------------------
+
+1. Edit settings/yuzudisqus.ini.append.php
+
+2. Insert the following code
+[threads]
+shortname=example
+items=5
+
+3. Replace example by your disqus shortname, specify the number of items to display and save
+
+4. Edit a template where you want the thread to appear.
+For example extension/ezwebin/design/ezwebin/templates/page_footer.tpl
+
+5. Paste the following code
+{include uri='design:disqus_threads.tpl' disqusini='threads'}
+
+disqusini: name of block parameter in yuzudisqus.ini.append.php
+
+6. Save the file and clear caches
+
+
+
+Top contributors functionnality
+-------------------------------
+
+1. Edit settings/yuzudisqus.ini.append.php
+
+2. Insert the following code
+[contributors]
+shortname=example
+items=5
+hide_moderators=enabled
+hide_avatars=enabled
+avatar_size=medium
+
+3. Replace example by your disqus shortname, specify the number of contributors to display.
+You can also define with enabled/disabled if you want to hide moderators and avatars
+For avatars size, you can use small (24px), medium (32px), large (48px), xlarge (72px)
+and ginormous (128px)
+Save your file
+
+4. Edit a template where you want the list of your best contributors to appear.
+For example extension/ezwebin/design/ezwebin/templates/page_footer.tpl
+
+5. Paste the following code
+{include uri='design:disqus_contributors.tpl' disqusini='contributors'}
+
+disqusini: name of block parameter in yuzudisqus.ini.append.php
+
+6. Save the file and clear caches
+
+
+
+Last comments functionnality
+----------------------------
+
+1. Edit settings/yuzudisqus.ini.append.php
+
+2. Insert the following code
+[comments]
+shortname=example
+items=5
+hide_avatars=disabled
+avatar_size=medium
+length=200
+
+3. Replace example by your disqus shortname, specify the number of items to display,
+You can also define with enabled/disabled if you want to hide avatars
+For avatars size, you can use small (24px), medium (32px), large (48px), xlarge (72px)
+and ginormous (128px)
+With length parameter, you can define the number of characters to display.
+Save your file
+
+4. Edit a template where you want the list of your best contributors to appear.
+For example extension/ezwebin/design/ezwebin/templates/page_footer.tpl
+
+5. Paste the following code
+{include uri='design:disqus_recent_comments.tpl' disqusini='contributors'}
+
+disqusini: name of block parameter in yuzudisqus.ini.append.php
+
+6. Save the file and clear caches
+
+
+
+
+Clear the cache
+===============
+
+To be sure all your changes take effect, you should clear the cache. This can
+be done from within the administration interface in the "Setup" top menu.
